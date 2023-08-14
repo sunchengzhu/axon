@@ -5,7 +5,6 @@ services:
     container_name: axon
     build: .
     restart: always
-    privileged: true
     ports:
       - 8000:8000
     volumes:
