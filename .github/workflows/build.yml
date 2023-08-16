@@ -47,6 +47,7 @@ jobs:
       if: steps.axon-bin-cache.outputs.cache-hit != 'true'
       run: cargo build
 
-    - name: Build a release version of Axon
-      if: steps.axon-bin-cache.outputs.cache-hit != 'true'
-      run: cargo build --release
+    # TOOD: not sure if this step is required
+    # - name: Build a release version of Axon
+    #   if: steps.axon-bin-cache.outputs.cache-hit != 'true'
+    #   run: cargo build --release
