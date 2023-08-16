@@ -38,11 +38,11 @@ jobs:
         target/debug/axon run \
           -c devtools/chain/config.toml \
           -g devtools/chain/genesis_single_node.json \
-          > ${{ runner.temp }}/single-axon-node.log &
+          > ${{ runner.temp }}/${{ matrix.os }}-single-axon-node.log &
         
         sleep 300
         set +e
-        result=$(tail -n 100 ${{ runner.temp }}/single-axon-node.log | grep 'state goto new height 100')
+        result=$(tail -n 100 ${{ runner.temp }}/${{ matrix.os }}-single-axon-node.log | grep 'state goto new height 100')
 
         if [[ "$result" != "" ]]
         then
@@ -58,7 +58,7 @@ jobs:
       with:
         name: axon-single-node-logs
         path: |
-          ${{ runner.temp }}/single-axon-node.log
+          ${{ runner.temp }}/${{ matrix.os }}-single-axon-node.log
 
   # multi-nodes:
   #   needs: build-axon
