@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Cache of the axon binary
+    - name: Cache of the Axon binary
       id: axon-bin-cache
       uses: actions/cache@v3
       with:
@@ -43,6 +43,10 @@ jobs:
           target/
         key: ${{ matrix.os }}-${{ runner.os }}-${{ runner.arch }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-    - name: Build Axon
+    - name: Build Axon in the development profile 
       if: steps.axon-bin-cache.outputs.cache-hit != 'true'
-      run: cargo build && cargo build --release
+      run: cargo build
+
+    - name: Build a release version of Axon
+      if: steps.axon-bin-cache.outputs.cache-hit != 'true'
+      run: cargo build --release
