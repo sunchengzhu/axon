@@ -16,6 +16,10 @@ jobs:
     env:
       REGISTRY: 'ghcr.io/'
       IMAGE_NAME: axon
+    # If you specify the access for any of these scopes, all of those that are not specified are set to none.
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - uses: actions/checkout@v3
@@ -70,5 +74,3 @@ jobs:
           docker run --rm ${{ env.IMAGE }} /app/axon --version
 
     # TODO: test the image
-
-    
