@@ -43,7 +43,7 @@ jobs:
       if: steps.cargo-test-cache.outputs.cache-hit != 'true'
       run: |
         cargo install cargo-sweep
-        cargo sweep --maxsize 12288
+        cargo sweep --maxsize 14336
 
     - name: Run Rust unit-test
       run: make test
