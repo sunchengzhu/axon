@@ -1,4 +1,4 @@
-name: From Issue Comments
+name: Trigger tests by `/run-ci` comment
 
 on:
   issue_comment:
