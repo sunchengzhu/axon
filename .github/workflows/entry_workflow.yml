@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       actions: write
-      issues: write
+      pull-requests: write
 
     steps:
       - name: Query author repository permissions
@@ -201,7 +201,7 @@ jobs:
           echo "result=$inputs" >> $GITHUB_OUTPUT
 
       # https://docs.github.com/en/rest/issues/comments?apiVersion=2022-11-28#create-an-issue-comment
-      # The `issues: write` permission is required in the step.
+      # The `pull-requests: write` permission is required in the step.
       - name: Post a coment about component information to PR
         id: post_workflow_run_comment
         uses: actions/github-script@v6
