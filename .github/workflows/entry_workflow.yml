@@ -21,7 +21,8 @@ jobs:
       pull-requests: write
 
     steps:
-      - run: |
+      - name: echo pull_request JSON
+        run: |
           echo ${{ github.event.issue.pull_request }}
           echo ---
           echo ${{ fromJson(github.event.issue.pull_request) }}
