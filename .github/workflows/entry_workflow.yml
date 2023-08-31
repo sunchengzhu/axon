@@ -75,6 +75,7 @@ jobs:
               core.info(`${JSON.stringify(resp, null, 2)}`);
               check_list=`${check_list}\n - Chaos CI`;
               }
+
             // check Coverage Test exist or not
             const coverage_match = pr.data.body.includes("[x] Coverage Test");
             if (coverage_match) {
