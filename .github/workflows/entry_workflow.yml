@@ -25,7 +25,12 @@ jobs:
         run: |
           echo ${{ github.event.issue.pull_request }}
           echo ---
-          echo ${{ fromJson(github.event.issue.pull_request) }}
+          echo ${{ github.event.issue }}
+          echo ---
+          echo ${{ fromJson(github.event.issue) }}
+
+          # echo ---
+          # echo ${{ fromJson(github.event.issue.pull_request) }}
 
       - name: Query author repository permissions
         uses: octokit/request-action@v2.x
