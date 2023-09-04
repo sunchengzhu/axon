@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   axon:
-    # TODO: update this image to ghcr.io/axonweb3/axon:dev
-    image: ghcr.io/flouse/axon:dev
+    image: ghcr.io/axonweb3/axon:dev
     ports:
     - 8000:8000
     - 127.0.0.1:8100:8100
