@@ -2,7 +2,8 @@ name: PR Lint
 
 concurrency:
   group: Conventional PR-${{ github.ref }}
-  cancel-in-progress: true
+  # only needs to check the latest commit in a PR
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 on:
   pull_request:

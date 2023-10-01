@@ -9,8 +9,8 @@ on:
 # see https://docs.github.com/en/actions/using-jobs/using-concurrency#example-only-cancel-in-progress-jobs-or-runs-for-the-current-workflow
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  # only needs to test the group's latest commit
-  cancel-in-progress: true
+  # only needs to test the latest commit in a PR
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 jobs:
   rust-test:
