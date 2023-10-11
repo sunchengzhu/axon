@@ -447,7 +447,9 @@ async fn execute_genesis(
     spec: &ChainSpec,
     db_group: &DatabaseGroup,
 ) -> ProtocolResult<RichBlock> {
+    // the metadata of epoch 0
     let metadata_0 = spec.params.clone();
+    // the metadata of epoch 1
     let metadata_1 = {
         let mut tmp = metadata_0.clone();
         tmp.epoch = metadata_0.epoch + 1;
