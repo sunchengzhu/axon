@@ -4,6 +4,7 @@ on:
   # TODO: Remove `push` and `pull_request` events after this workflow is stable,
   #       if the use too much GitHub Action run time.
   pull_request:
+  push:
 
   merge_group:
   workflow_dispatch:
@@ -20,6 +21,7 @@ jobs:
         # Supported GitHub-hosted runners and hardware resources
         # see https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
         os: [ubuntu-22.04]
+        thread: [1, 2, 3, 4, 5] # TODO: remove this test code
       fail-fast: false
     runs-on: ${{ matrix.os }}
 
