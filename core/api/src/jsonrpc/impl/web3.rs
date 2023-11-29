@@ -355,17 +355,18 @@ impl<Adapter: APIAdapter + 'static> Web3RpcServer for Web3RpcImpl<Adapter> {
     ) -> RpcResult<U256> {
         match block_id.unwrap_or_default() {
             BlockId::Pending => {
+                let account_nonce = self
+                    .adapter
+                    .get_account(Context::new(), address, BlockId::Pending.into())
+                    .await
+                    .map(|account| account.nonce)
+                    .unwrap_or_default();
                 let pending_tx_count = self
                     .adapter
                     .get_pending_tx_count(Context::new(), address)
                     .await
                     .map_err(|e| RpcError::Internal(e.to_string()))?;
-                Ok(self
-                    .adapter
-                    .get_account(Context::new(), address, BlockId::Pending.into())
-                    .await
-                    .map(|account| account.nonce + pending_tx_count)
-                    .unwrap_or_default())
+                Ok(account_nonce + pending_tx_count)
             }
             BlockId::Hash(ref hash) => {
                 let number = self
