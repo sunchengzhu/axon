@@ -84,7 +84,7 @@ jobs:
                 "openzeppelin_test_11.yml",
                 "openzeppelin_test_16_19.yml",
               ];
-              workflowIds.forEach(async (workflowId) => {
+              await Promise.all(workflowIds.map(async (workflowId) => {
                 const resp = await github.rest.actions.createWorkflowDispatch({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -96,7 +96,7 @@ jobs:
                 });
                 core.info(`${JSON.stringify(resp, null, 2)}`);
                 check_list = `${check_list}\n - ${workflowId}`;
-              });
+              }));
             }
 
             // check v3 Core Tests exist or not
