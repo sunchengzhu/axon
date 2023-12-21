@@ -78,7 +78,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: axonweb3/axon-hardfork-test
-        ref: b1f768de8be10604cad882474c0dcfa19c0a93ea
+        ref: b84c5d07cc88ec58f40123d6352da72fc60606ff
         path: axon-hardfork-test
 
     - name: Choose network
